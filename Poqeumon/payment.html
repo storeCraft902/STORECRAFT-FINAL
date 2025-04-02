@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Pokemon GO Webstore</title>
+    <link rel="stylesheet" href="cartpayment.css">
+    <style>
+        .form-section {
+            margin-bottom: 15px;
+        }
+
+        .form-section h3 {
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .form-section label {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 14px;
+        }
+
+        .form-section input,
+        .form-section select {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-section .address-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-section .address-row input {
+            width: 48%;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <a href="cart.html" class="back-to-home">
+        &#8592; Back to Cart
+    </a>
+
+    <div class="container">
+        <div class="cart-panel">
+            <div class="logo-container">
+                <img src="storecraft logo.png" alt="Logo">
+            </div>
+            <h2>Checkout</h2>
+            <form id="checkoutForm">
+                <div class="form-section">
+                    <h3>Contact</h3>
+                    <label for="fullName">Full Name:</label><br>
+                    <input type="text" id="fullName" name="fullName" required><br>
+
+                    <label for="contactNumber">Phone Number:</label><br>
+                    <input type="tel" id="contactNumber" name="contactNumber" required><br>
+                </div>
+
+                <div class="form-section">
+                    <h3>Address</h3>
+                    <label for="regionCityBarangay">Region, Province, City, Barangay:</label><br>
+                    <input type="text" id="regionCityBarangay" name="regionCityBarangay" required><br>
+
+                    <label for="postalCode">Postal Code:</label><br>
+                    <input type="text" id="postalCode" name="postalCode" required><br>
+
+                    <label for="streetAddress">Street Name, Building, House No.:</label><br>
+                    <input type="text" id="streetAddress" name="streetAddress" required><br>
+                </div>
+
+                <div class="form-section">
+                    <label for="paymentMethod">Payment Method:</label><br>
+                    <select id="paymentMethod" name="paymentMethod" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="cod">Cash on Delivery</option>
+                        <option value="card">Visa/Mastercard</option>
+                        <option value="gcash">GCash/Maya</option>
+                    </select><br>
+
+                    <div id="cardDetails" style="display: none;">
+                        <label for="cardNumber">Card Number:</label><br>
+                        <input type="text" id="cardNumber" name="cardNumber"><br>
+
+                        <label for="expiry">Expiry Date:</label><br>
+                        <input type="text" id="expiry" name="expiry" placeholder="MM/YY"><br>
+
+                        <label for="cvv">CVV:</label><br>
+                        <input type="text" id="cvv" name="cvv"><br>
+                    </div>
+                </div>
+
+                <button class="cart-checkout-button" type="submit">Place Order</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const paymentMethodSelect = document.getElementById('paymentMethod');
+        const cardDetailsDiv = document.getElementById('cardDetails');
+
+        paymentMethodSelect.addEventListener('change', function() {
+            if (this.value === 'card') {
+                cardDetailsDiv.style.display = 'block';
+            } else {
+                cardDetailsDiv.style.display = 'none';
+            }
+        });
+
+        document.getElementById('checkoutForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            console.log("Order placed");
+            window.location.href = "history.html";
+        });
+    </script>
+
+    <section class="footer">
+        <div class="footer">
+            <div class="container">
+                <div class="column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="mailto: pokemon-go-support@nianticlabs.com">Email: pokemon-go-support@nianticlabs.com</a></li>
+                        <li>Phone No.: (415)570-8871</li>
+                        <li><a href="https://www.facebook.com/PokemonGO" target="_blank">Facebook: Pokémon GO</a></li>
+                        <li><a href="https://www.instagram.com/pokemongoapp/?igsh=MXBwaWt3Z240MzJudv%3D%3D&fbclid=IwY2xjawJPkfpleHRuA2FlbQIxMAABHUQk864MvUypy3u_wTRWmRECQ7OzQrDZnzCG_1mIQo_VJ2NYbvyQR2YvtA_aem_U2AD7KQx8gtPQ5_i0CE7fA" target="_blank">Instagram: pokemongoapp</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Information</h3>
+                    <ul>
+                        <li>Abrecea | Guerzon | Ong | Tan</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Newsletter sign-up</h3>
+                    <ul>
+                        <form>
+                            <div class="sign-up">
+                                <input type="email" class="form-control" id="EmailSignUp" aria-describedby="emailHelp" placeholder="Enter email" />
+                            </div>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+            <p>For educational purposes only.</p>
+            <p>No copyright infringement is intended.</p>
+        </div>
+    </section>
+</body>
+</html>
